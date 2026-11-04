@@ -1,0 +1,29 @@
+cabal-version: 3.0
+name:          quest-files
+version:       0.1.0.0
+build-type:    Simple
+
+-- The CI experiments for the CI chapter of the book.
+-- 本の CI の章のための実験
+
+common shared
+  default-language: GHC2021
+  ghc-options:      -Wall
+  build-depends:
+    , base             >=4.18 && <5
+    , directory        ^>=1.3
+    , filepath         >=1.4 && <1.6
+
+library
+  import:           shared
+  exposed-modules:  QuestFiles
+  hs-source-dirs:   src
+
+test-suite quest-files-test
+  import:           shared
+  type:             exitcode-stdio-1.0
+  main-is:          Spec.hs
+  hs-source-dirs:   test
+  build-depends:
+    , quest-files
+    , hspec            ^>=2.11

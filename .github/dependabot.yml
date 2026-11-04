@@ -1,0 +1,8 @@
+# Ask Dependabot to keep the versions of the actions up to date.
+# action の版を新しく保つように、Dependabot に頼む
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

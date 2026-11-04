@@ -24,9 +24,15 @@ withQuestFolder action = do
   pure result
 
 main :: IO ()
-main = hspec $ describe "Modern.QuestFiles" $
+main = hspec $ describe "QuestFiles" $ do
   -- 名前の順に読む（どの OS でも）
   it "reads the quests in name order" $ do
     quests <- withQuestFolder loadQuests
+    quests `shouldBe`
+      ["explore the cave", "find the herb", "climb the tower"]
+  -- The draft: it trusts the order listDirectory gives.
+  -- 下書き：listDirectory の順番を信じている
+  it "the draft reads the quests in name order (it may not!)" $ do
+    quests <- withQuestFolder loadQuestsDraft
     quests `shouldBe`
       ["explore the cave", "find the herb", "climb the tower"]
